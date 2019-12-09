@@ -1,5 +1,5 @@
 # horse-jumps
-Models trained at TPD to classify sequences of lightweight tracker observations as either a Jump or Not a Jump. Typically Speed and Stride Length near obstacles form the following time series,
+Models trained at TPD to classify sequences of lightweight tracker observations as either a Jump or Not a Jump. Typically Speed and Stride Length near obstacles form the following time series, slowing down and shortening strides:
 
 <img src="/images/speed.png" alt="Speed near Obstacles" width="400" height="150">
 <img src="/images/strideLength.png" alt="Stride Length near Obstacles" width="400" height="150">
