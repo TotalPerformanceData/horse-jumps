@@ -22,12 +22,17 @@ eg for field of 10 horses (observations) the timer on my machine reports 7.7ms
 email george.swindells@totalperformancedata.com
 """
 from datetime import datetime, timedelta
-import os, sys, json
+import os, sys, json, bz2, pickle
 import numpy as np
 import tensorflow.keras as keras
 import matplotlib.pyplot as plt
 import pandas as pd
 
+def importTrainData(fname = 'fenceModelData.pickle.bz2'):
+    with bz2.open(fname,'rb') as f:
+        data = pickle.load(f)
+    return data
+    
 def customScaler(X):
     # take nparray of [V, SF, Bearing], scale velocity using fixed max-min
     # output = np.array([velocity, SF, bearingChange, SL]) in [0,1]
