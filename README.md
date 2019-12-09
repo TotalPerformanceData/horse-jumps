@@ -10,11 +10,15 @@ Models are trained using keras with tensorflow backend.
 
 The validation score of the Live model was 98.07%. There were 17 (1.44%) instances of a false positive in the validation data, where a positive result is defined as a prediction greater than 0.75. Predictions are made by horse so by combining nearby runners the probability of 2 or more runners supplying a false positive in some regoin is remote.
 
-Fences of known locations as professionally surveyed at a handful of racecourses and GPS data points from the TPD Points Feed at 2Hz were used to generate the data set. Testing on Live recordings of the data (at 1Hz and interpolated to 2Hz to match model input requirement)  showed comparable accuracy.
+Fences of known locations as professionally surveyed at a handful of racecourses and GPS data points from the TPD Points Feed at 2Hz were used to generate the data set. Testing on Live recordings of the data (at 1Hz and interpolated to 2Hz to match model input requirement) showed comparable accuracy.
 
 Predictions on my machine takes around 7ms + N\*0.07ms, for N predictions passed to function. Entry to the predict() function seems to be the main restriction on speed and I expect would be faster if converted to another language and/or compiled though many of the methods appear to be platform specific and require a bunch of tinkering, but I also welcome feedback on that front.
 
-Input data for the model is supplied in folder 'data', as improvements on the model would be welcome. The dataset is pickled and compressed through bz2, a simple function to import the data to a workspace is including in JumpsModel.py.
+Input data for the model is supplied in folder 'data', as improvements on the model would be welcome. The dataset (13607 observations) is pickled and compressed through bz2, a simple function 'importTrainData' to import the data to a workspace is including in JumpsModel.py. Returns a dictionary with keys:
+'labels' : binary choice either 1 if is a jump at timestep row index 16, 0 otherwise
+'Unaltered' : time series data without scaling
+'LMDcus24' : customScaler processed timeseries data for restrospective model which includes 4s of future points from row 16
+'LMDcus16' : as above, for live model with no future points
 
 Heatmaps can be produced by averaging the scores of nearby Lat-Lon points. The output of which for a couple of races over fences are shown below. The heatmaps show as more red for average scores which are more confident of close proximity to an obstacle, and more blue otherwise.
 
