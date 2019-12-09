@@ -1,5 +1,8 @@
 # horse-jumps
-Models trained at TPD to classify sequences of lightweight tracker observations as either a Jump or Not a Jump
+Models trained at TPD to classify sequences of lightweight tracker observations as either a Jump or Not a Jump. Typically Speed and Stride Length near obstacles form the following time series,
+
+<img src="/images/speed.png" alt="Speed near Obstacles" width="400" height="150">
+<img src="/images/strideLength.png" alt="Stride Length near Obstacles" width="400" height="150">
 
 Both a Live model using previous 8.5 seconds of data points as well as a Retrospective model additionally using the next 4s after some examined timestamp. Live model applications include live trading bet management, and powering race animations.
 
