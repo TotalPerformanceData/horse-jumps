@@ -13,3 +13,17 @@ Predictions on my machine takes around 7ms + N\*0.07ms, for N predictions passed
 
 Input data for the model is supplied, as improvements on the model would be welcome.
 
+Heatmaps can be produced by averaging the scores of nearby Lat-Lon points. The output of which for a couple of races over fences are shown below. The heatmaps show as more red for average scores which are more confident of close proximity to an obstacle, and more blue otherwise.
+
+<img src="/images/WorcesterRetro.png" alt="Retrospective model applied to a race a Worcester" width="400" height="300"> <img src="/images/WorcesterLive.png" alt="Live model applied to a race a Worcester" width="400" height="300">
+
+<img src="/images/UttoxeterRetro.png" alt="Retrospective model applied to a race a Uttoxeter" width="400" height="300"> <img src="/images/UttoxeterLive.png" alt="Live model applied to a race a Uttoxeter" width="400" height="300">
+
+The performance of the model on Fences is very good.
+
+Fences are a little bigger than Hurdles so the characteristics of the observation attributes when approaching an obstacle are generally clearer and easier to predict. Also, the training dataset only contains observations from Fence races because currently surveyed data for the Hurdles is very difficult to source accurately since they move around the course meeting to meeting so it's likely that there will be occaisions whereby the horses are sufficiently fluent over the obstacle such that the model calls it Flat. That being said, the perforamnce of the model on Hurdle races is still useable for some applications as indicated by the heatmap below.
+
+<img src="/images/SouthwellRetroHurdle.png" alt="Retrospective model applied to a Hurdle race a Southwell" width="400" height="300"> <img src="/images/SouthwellLiveHurdle.png" alt="Live model applied to a Hurdle race a Southwell" width="400" height="300">
+
+I've side noted that often the better class, 3+, horses tend to produce more confusion over Hurdles than that of lower class horses which could be a consideration in applications.
+
